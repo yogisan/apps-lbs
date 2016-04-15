@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en" id="mobile-lbs-puskesmas.16mb.com">
+ 
+<!-- Mirrored from mobile-lbs-puskesmas.16mb.com by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 13 Apr 2016 10:20:17 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8">
+   <title>Apps LBS Puskesmas</title>
+   <meta name="keywords" content="Location Based Service, Puskesmas, Google maps, jQuery, plugin, mobile, iphone, ipad, android, HTML5"/>
+   <meta name="description" content="Apps LBS Puskesmas Making use Google maps and HTML5, based on Google maps V3 plugin for jQuery by @johansall and modefied by @yogisan, jQuery UI and jQuery Mobile http://code.google.com/p/jquery-ui-map/"/>
+   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+   <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="translucent black">
+     <meta name="author" content="@yogisan">
+      <meta name="robots" content="all">
+       <link rel="icon" href="m57.png">
+        <link rel="apple-touch-icon" href="m57.png">
+         <link rel="apple-touch-icon" sizes="72x72" href="m72.png">
+         <link rel="apple-touch-icon" sizes="114x114" href="m114.png">
+         <link href="http://fonts.googleapis.com/css?family=Open%20Sans&amp;subset=latin" rel="stylesheet">
+          <link rel="stylesheet" href="main-mobile2.css">
+          <script src="klass.min.js"></script>
+          <script src="modernizr-2.0.min.js"></script>
+          <script src="respond.min.js"></script>
+          <script src="https://www.google.com/jsapi?"></script>
+          <script>
+           google.load('jquery', '1.7.1');
+          </script>
+          <script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+          <script>
+           $(function () {
+            $('body').delegate('.content-secondary .ui-collapsible-content', 'click', function () {
+             $(this).trigger("collapse")
+            });
+           });
+           function setDefaultTransition() {
+            var winwidth = $(window).width(),
+             trans = "slide";
+            if (winwidth >= 1000) {
+             trans = "fade";
+            } else if (winwidth >= 650) {
+             trans = "fade";
+            }
+            $.mobile.defaultPageTransition = trans;
+           }
+           $(function () {
+            setDefaultTransition();
+            $(window).bind("throttledresize", setDefaultTransition);
+           });
+          </script>
+         </head>
+         <body>
+          <div id="fb-root"></div>
+          <script>
+           (function (d, s, id) {
+            var js,
+             fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+             return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.async = true;
+            js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1";
+            fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+          </script>
+          <div id="home" data-role="page" class="type-interior" data-theme="g">
+           <div data-role="header" data-theme="a" class="header">
+            <h1>Apps LBS Puskesmas</h1>
+           </div>
+           <div data-role="content" class="content-secondary">
+            <div data-role="collapsible" data-collapsed="false" data-content-theme="g">
+             <h3>Menu</h3>
+             <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="a">
+              <li data-theme="a"><a href="#">About</a></li>
+              <li><a rel="external" href="map_simple.html">Basic map</a></li>
+              <li><a rel="external" href="gps_map.html">Geolocation</a></li>
+              <li><a rel="external" href="directions_map.html">Get directions</a></li>
+              <li><a rel="external" href="view_all_puskesmas.html">View All</a></li>
+              <li data-icon="star"><a href="http://www.addthis.com/bookmark.php?url=http://mobile-lbs-puskesmas.16mb.com" rel="external">Share</a></li>
+             </ul>
+            </div>
+           </div>
+           <div data-role="content" class="content-primary" style="padding:1em;height:100%;">
+            <div class="ui-bar-c ui-corner-all ui-shadow" style="padding:1em;">
+             <div data-role="content" style="padding:1em;">
+              <h1>Welcome to Apps LBS Puskesmas</h1>
+              <ul style="list-style:none;padding-left:0;font-weight:normal; font-size:13px;">
+               <strong><li>About US</li></strong>
+               <li>Apps LBS Puskesmas ini di buat oleh Mahasiswa Universitas Bina Darma.</li>
+               <li>Aplikasi ini di buat untuk memenuhi Tugas dari mata kuliah mereka yaitu Rekayasa Perangkat Lunak Lanjut Mereka membuat sebuah Aplikasi yang berguna untuk menemukan lokasi yang di ingikan atau bahasa kerennya Location Based Service. </li>
+               <li>Mereka membuat Aplikasi ini menggunakan API Google Maps dengan Text Direction Dimana Pengguna bisa melihat keadaannya dan mau kemana tujuannya dan template jQuery Mobile, Lalu Ucapan Terima Kasih Kepada Tuhan Yang Maha Esa, dan Pak Usman Ependi M.kom. </li>
+               <li>&nbsp;</li>
+               <b><li>Best Regard's</li>
+                  <li>Z.A.Y Inc</li</b><br></br>            
+               
+              <div class="g-plusone"></div>
+              <p></p>
+              <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a>
+              <script src="http://platform.twitter.com/widgets.js"></script>
+              <p></p>
+              <div class="fb-like" data-href="http://mobile-lbs-puskesmas.16mb.com" data-send="false" data-width="100" data-layout="button_count" data-show-faces="false" data-font="lucida grande"></div>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <script>
+          (function () {
+           var po = document.createElement('script');
+           po.type = 'text/javascript';
+           po.async = true;
+           po.src = 'https://apis.google.com/js/plusone.js';
+           var s = document.getElementsByTagName('script')[0];
+           s.parentNode.insertBefore(po, s);
+          })();
+	var _gaq=[['_setAccount','UA-19887300-1'],['_trackPageview']];
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+      </body>
+     
+<!-- Mirrored from mobile-lbs-puskesmas.16mb.com by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 13 Apr 2016 10:20:28 GMT -->
+</html>

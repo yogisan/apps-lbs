@@ -1,0 +1,217 @@
+<html>  
+  <head>  
+   <title>Apps LBS Puskesmas | Berbasis Website</title> 
+<link rel="shortcut icon" href="https://1.bp.blogspot.com/-9avnpWV4xo4/Vv8SsQVsZFI/AAAAAAAAB94/-gx0G0KVG6M-I1gMsnsmvjHfLTP15YWnw/s1600/favicon-96x96.png" />
+ <style>
+   html { height: auto }
+   #panel{padding:5px;}
+      .input {
+   height: 25px;
+   padding: 2px;
+   width: 200px;
+      }
+   #btn{
+     height: 31px;
+     background: #111111;
+     border: none;
+     padding: 5px;
+     color: #fff;
+   }
+   #directions-panel {
+        height: auto;
+        float: right;
+        width: auto;
+        overflow: auto;
+      }
+   #map-canvas { height: auto;}
+   *{
+   margin: 0;
+   padding: 0;
+  }
+  body {
+   text-align:center;
+   background-color:#111111;
+   font-family:Arial, Helvetica, sans-serif;
+   font-size:80%;
+   color:#666;
+  }
+  .wrap {
+   background: #f3f8fb;
+   width:auto;
+   margin:30px auto;
+   border: 4px dashed #61b3de;
+   border-radius:4px;
+   padding: 20px 5px;
+  }
+  h1 {
+   font-family:Georgia, "Times New Roman", Times, serif;
+   font-size:24px;
+   color:#645348;
+   font-style:italic;
+   text-decoration:none;
+   font-weight:50;
+   padding: 10px;
+  }
+  .copy{
+   margin-top: 20px;
+   clear: both;
+  }
+  @media print {
+   #map-canvas {
+     height: auto;
+     margin: 0;
+   }
+ 
+   #directions-panel {
+     float: none;
+     width: 50%;
+   }
+    }
+		
+	
+    </style>   
+  </head>  
+  <body>
+ <div class="wrap">
+</head>
+<body><br>
+<h2>View All Puskesmas</h2></br>
+<center> <a href="index.html">Back to Home</a></li><br> </br>  
+  <div id="map_canvas" style="width:100%; height:70%;">  
+    
+       
+    </div>  
+  </body> 
+</head>
+<body><br>
+  <p class='copy'>Copyright &copy <a href="index.html">Z.A.Y Inc</a> 2016</p>
+  
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>  
+  <script type="text/javascript">  
+  var infowindow = null;  
+  (function() {  // fungsi untuk dijalankan ketika halaman web dubuka  
+     
+      
+   initialize(); // mengeksekusi fungsi initialize()  
+     
+  })();  
+      
+    
+    function initialize() {  
+       // Baris berikut digunakan untuk mengisi marker atau tanda titik di peta  
+        var sites = [  
+    
+['Palembang', -2.9760735,104.77543070000002 ,1, '<h4>Kota Palembang</h4><p>Palembang, Kota Palembang, Sumatera Selatan, Indonesia</p>'], // pertama merupakan judul market, kedua adalah titik koordinan latitude, ketiga longitude, dan keempat merupakan z index (titik mana yang ditampilkan lebih dulu) untuk menentukan titik mana diatas titik mana, ketiga merupakan isi keterangan marker nya.  
+['Puskesmas Pembina', -2.9982198,104.7749258 ,2, '<h4>Puskesmas Pembina</h4><p>Jl. A. Yani No. 62 Silaberanti, Kec. Seberang Ulu I, Lat: -2.9982198 Lng: 104.7749258</p>'],  
+['Puskesmas 7 Ulu', -2.9963567,104.76394000000005 ,3, '<h4>Puskesmas 7 Ulu</h4><p> Jl. KH. Azhari, 7 Ulu, Seberang Ulu I, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9963567 Lng: 104.76394000000005</p>'],   
+['Puskesmas Nagaswidak', -2.9915698,104.78201439999998 ,4, '<h4>Puskesmas Nagaswidak</h4><p>Lorong Gumay, 14 Ulu, Seberang Ulu II, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9915698 Lng: 104.78201439999998</p>'],  
+['Puskesmas Taman Bacaan', -2.9864523,104.78347669999994 ,5, '<h4>Puskesmas Taman Bacaan</h4><p> Lorong Taman Bacaan, Tangga Takat, Seberang Ulu II, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9864523 Lng: 104.78347669999994</p>'],  
+['Puskesmas 4 Ulu',  -3.0100753,104.76029189999997 ,6, '<h4>Puskesmas 4 Ulu</h4><p>Lorong Abadi, 3-4 Ulu, Seberang Ulu I, Kota Palembang, Sumatera Selatan, Indonesia Lat: -3.0100753 Lng: 104.76029189999997</p>'],  
+['Puskesmas Opi',  -3.0269385,104.77834800000005 ,7, '<h4>Puskesmas Opi</h4><p>15 Ulu, Seberang Ulu I, Kota Palembang, Sumatera Selatan, Indonesia Lat: -3.0269385 Lng: 104.77834800000005</p>'],  
+['Puskesmas Plaju', -2.9974881,104.8107599 ,8, '<h4>Puskesmas Plaju</h4><p>Lrg. Muawanah, Plaju Ulu, Kec. Plaju, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9974881 Lng: 104.8107599</p>'],  
+['Puskesmas Kampus', -2.9752886,104.73838820000003 ,9, '<h4>Puskesmas Kampus</h4><p>Jl. Golf, Lorok Pakjo, Ilir Bar. I, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9752886 Lng: 104.73838820000003</p>'],  
+['Puskesmas Pakjo', -2.9624973,104.7220337 ,10, '<h4>Puskesmas Pakjo</h4><p>Jl. Inspektur Marzuki No.2240, Siring Agung, Ilir Bar. I, Kota Palembang, Sumatera Selatan, IndonesiaLat: -2.9624973 Lng: 104.7220337</p>'],  
+['Puskesmas Padang Selasa', -2.9913576,104.73182029999998 ,11, '<h4>Puskesmas Padang Selasa</h4><p>Jl. Padang Selasa, Ilir Bar. I, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9913576 Lng: 104.73182029999998</p>'],  
+['Puskesmas 23 Ilir', -2.9883662,104.75457260000007 ,12, '<h4>Puskesmas 23 Ilir</h4><p>Jl. Datuk Moh. Akib No.100, 23 Ilir, Bukit Kecil, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9883662 Lng: 104.75457260000007</p>'],  
+['Puskesmas Merdeka', -2.990579,104.75284999999997 ,13, '<h4>Puskesmas Merdeka</h4><p> Jl. Merdeka No.66, Talang Semut, Bukit Kecil, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.990579 Lng: 104.75284999999997</p>'],  
+['Puskesmas Ariodillah', -2.9673676,104.74057289999996 ,14, '<h4>Puskesmas Ariodillah</h4><p>Jl. Ariodillah No.2102, 20 Ilir III, Ilir Tim. I, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9673676 Lng: 104.74057289999996</p>'],  
+['Puskesmas Dempo', -2.9842581,104.76082870000005 ,15, '<h4>Puskesmas Dempo</h4><p>Jl. Kolonel Atmo No.17, 17 Ilir, Ilir Tim. I, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9842581 Lng: 104.76082870000005</p>'],  
+['Puskesmas Talang Ratu', -2.954185, 104.732762 ,16, '<h4>Puskesmas Talang Ratu</h4><p>	Jl. Talang Ratu Km 5 Ilir D-IV, Kec. Ilir Timur I, Lat : -2.954185, Lng : 104.732762</p>'],  
+['Puskesmas Sekip', -2.9558425,104.75432780000006 ,17, '<h4>Puskesmas Sekip</h4><p>Jl. Ampibi, 20 Ilir II, Kemuning, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9558425 Lng: 104.75432780000006</p>'],  
+['Puskesmas 5 Ilir', -2.965261,104.772822 ,18, '<h4>Puskesmas 5 Ilir</h4><p>Jl. Bambang Utoyo, Kec. Ilir Timur II, Lat: -2.965261 Lng: 104.772822</p>'],  
+['Puskesmas 11 Ilir', -2.980791,104.77128949999997 ,19, '<h4>Puskesmas 11 Ilir</h4><p>Jl. Slamet Riyadi No.455, Kuto Batu, Ilir Tim. II, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.980791 Lng: 104.77128949999997</p>'],  
+['Puskesmas Boom Baru', -2.9772649,104.77688940000007 ,20, '<h4>Puskesmas Boom Baru</h4><p>Lawang Kidul, Ilir Tim. II, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9772649 Lng: 104.77688940000007</p>'],  
+['Puskesmas Kenten', -2.934341,104.7692429 ,21, '<h4>Puskesmas Kenten</h4><p>Jl. Much. Prabu Mangkunegara No.1, Ilir Tim. II, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.934341 Lng: 104.7692429</p>'],  
+['Puskesmas Sei Selincah', -2.9681032,104.8207294 ,22, '<h4>Puskesmas Sei Selincah</h4><p>Jl. Mayor Zen, Sei Selincah, Kalidoni, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9681032 Lng: 104.8207294</p>'],  
+['Puskesmas Multi Wahana', -2.9275612,104.7945446 ,23, '<h4>Puskesmas Multi Wahana</h4><p>Jl. Mitra Raya, Sako, Sako, Kota Palembang, Sumatera Selatan, Indonesia Lat: -2.9275612 Lng: 104.7945446</p>'],  
+['Puskesmas Sako', -2.934287, 104.791029 ,24, '<h4>Puskesmas Sako</h4><p>Jalan Lematang III Sialang, Sako, Kota Palembang, Sumatera Selatan, Indonesia Lat : -2.934287, Lng : 104.791029</p>'],
+['Puskesmas Sosial', -2.951403, 104.736795 ,25, '<h4>Puskesmas Sosial</h4><p>Jl. Sosial Komplek PSBD "Budi Perkasi" KM. 5, Kec. Sukarami Lat : -2.951403, Lng : 104.736795</p>'],  
+['Puskesmas Sukarame', -2.9165972,104.71706970000002 ,26, '<h4>Puskesmas Sukarame</h4><p>Jl. Kebun Bunga Rt. 37 No. 1 KM. 9, Kec. Sukarami Lat: -2.9165972 Lng: 104.71706970000002</p>'],  
+['Puskesmas Alang - alang Lebar', -2.932496, 104.698937 ,27, '<h4>Puskesmas Alang - alang Lebar</h4><p>Jl. Jati Talang Kelapa, Alang Alang Lebar, Kota Palembang, Sumatera Selatan, Indonesia Lat : -2.932496, Lng : 104.698937</p>'],  
+['Puskesmas Kecamatan Sukarami KM 9', -2.919638, 104.733613 ,28, '<h4>Puskesmas Kecamatan Sukarami KM 9</h4><p>Jl. Suak Permai Sukajaya, Sukarami, Kota Palembang, Sumatera Selatan, Indonesia Lat : -2.919638, Lng : 104.733613</p>'],  
+['Puskesmas Sei Baung', -2.973469, 104.750435 ,29, '<h4>Puskesmas Sei Baung</h4><p>Jl. Doktor Hakim Sei Pangeran, Ilir Timur I, Kota Palembang, Sumatera Selatan, Indonesia Lat : -2.973469, Lng : 104.750435</p>'],  
+['Puskesmas Puncak Sekuning', -2.981697, 104.732239 ,30, '<h4>Puskesmas Puncak Sekuning</h4><p>Jl.Srijaya Negara Bukit Lama, Ilir Barat I, Kota Palembang, Sumatera Selatan, Indonesia Lat : -2.981697, Lng : 104.732239</p>'],  
+['Puskesmas Sabokingking', -2.973452, 104.788940 ,31, '<h4>Puskesmas Sabokingking</h4><p>Lorong Keramat Sungai Buah, Ilir Timur II, Kota Palembang, Sumatera Selatan, Indonesia Lat : -2.973452, Lng : 104.788940</p>'],  
+
+        ];  
+        var centerMap = new google.maps.LatLng(-2.9760735,104.77543070000002); // mengatur pusat peta  
+          
+        var myOptions = {  
+          zoom: 13, // level zoom peta  
+          center: centerMap, // setting pusat peta ke centerMap  
+          mapTypeId: google.maps.MapTypeId.ROADMAP //menentukan tipe peta  
+        }  
+    
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); //menempatkan peta pada div dengan ID map_canvas di html  
+    
+        setMarkers(map, sites); // memanggil fungsi setMarker untuk menandai titik di peta.  
+        setAction(map); //tambahan dari tutorial 2 untuk memanggil fungsi setAction(map);  
+        infowindow = new google.maps.InfoWindow({  
+            content: "loading..."  
+          });  
+    
+        var bikeLayer = new google.maps.BicyclingLayer();  
+        bikeLayer.setMap(map); //memnunculkan peta  
+          
+      }  
+    
+        
+    
+    
+    
+        function setMarkers(map, markers) {  
+         //berikut merupakan perulangan untuk membaca masing masing titik yang telah kita definisikan di sites[];  
+        for (var i = 0; i < markers.length; i++) {  
+          var sites = markers[i];  
+          var siteLatLng = new google.maps.LatLng(sites[1], sites[2]);  
+          var marker = new google.maps.Marker({  
+            position: siteLatLng,  
+            map: map,  
+            title: sites[0],  
+            zIndex: sites[3],  
+            html: sites[4]  
+    
+          });  
+    
+          var contentString = "Some content";  
+          // berikut merupakan fungsi untuk mengatur agar keterangan marker muncuk ketika mouse diarahkan ke marker (mouse over)  
+          google.maps.event.addListener(marker, "mouseover", function () {  
+              
+            infowindow.setContent(this.html);  
+            infowindow.open(map, this);  
+          });  
+        }  
+      }  
+    
+
+    
+        function setAction(map){  
+            
+          google.maps.event.addListener(map, "leftclick", function(event) {  
+    
+          if(confirm("Tandai Titik Ini? (klik pada tanda yang muncul untuk melihat pilihan)")){  
+            var lat = event.latLng.lat();  
+            var lng = event.latLng.lng();  
+            var form = '<h4>Tambah Data</h4><form id="formtambahdata" method="post" action="simpan.php"><br><input type="text" id="nama" placeholder="nama tempat" name="nama"><br><textarea id="keterangan" name="keterangan" placeholder="Isi Keterangan tempat"></textarea><br><input type="text" id="latlng" name="latlng" value="'+lat+','+lng+'"><br><input type="submit" value="Simpan"></form>';  
+			var siteLatLng = new google.maps.LatLng(lat, lng);  
+            var marker = new google.maps.Marker({  
+               position: siteLatLng,  
+                map: map,  
+               title: "add data",  
+                zIndex: 100,  
+                html: form  
+    
+              });  
+             google.maps.event.addListener(marker, "mouseover", function () {  
+                  
+               infowindow.setContent(this.html);  
+                infowindow.open(map, this);  
+              });  
+    
+          }  
+            
+        });  
+        }  
+      
+  </script>  
+  </html>
